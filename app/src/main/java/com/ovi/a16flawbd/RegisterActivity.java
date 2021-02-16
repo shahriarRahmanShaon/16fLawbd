@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText username, password, email;
+    EditText username, password, email, lawyer_code;
     Button btn_register;
     FirebaseAuth auth;
     DatabaseReference reference;
@@ -41,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         email = findViewById(R.id.email);
+        lawyer_code = findViewById(R.id.lawyer_code);
         btn_register = findViewById(R.id.btn_register);
         auth = FirebaseAuth.getInstance();
 
@@ -50,12 +51,13 @@ public class RegisterActivity extends AppCompatActivity {
                 String usernameFromText = username.getText().toString();
                 String emailFromText = email.getText().toString();
                 String passwordFromText = password.getText().toString();
+                String lawyer_codeText = lawyer_code.getText().toString();
                 //calling register function
                 if (TextUtils.isEmpty(usernameFromText) || TextUtils.isEmpty(emailFromText) || TextUtils.isEmpty(passwordFromText)){
                     Toast.makeText(RegisterActivity.this, "All fields are required", Toast.LENGTH_SHORT).show();
                 }else
                 {
-                    register(usernameFromText, emailFromText, passwordFromText);
+                    register(usernameFromText, emailFromText, passwordFromText, lawyer_codeText);
                 }
 
             }
@@ -64,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // method for authentication
-    private void register ( String username, String email, String password){
+    private void register ( String username, String email, String password, String lawyer_code){
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -78,6 +80,7 @@ public class RegisterActivity extends AppCompatActivity {
                     hashMapForSendingLoginValueAtOnce.put("username", username);
                     hashMapForSendingLoginValueAtOnce.put("id", userId);
                     hashMapForSendingLoginValueAtOnce.put("imageUrl", "Default");
+                    hashMapForSendingLoginValueAtOnce.put("IamaLawyer", lawyer_code);
                     reference.setValue(hashMapForSendingLoginValueAtOnce).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {

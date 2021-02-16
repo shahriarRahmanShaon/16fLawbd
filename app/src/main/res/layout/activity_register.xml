@@ -42,7 +42,15 @@
             android:id="@+id/password"
             android:inputType="textPassword"
             android:layout_marginTop="10dp"
-            android:hint="give the password you love to remember"/>
+            android:hint="password"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lawyer_code"
+            android:inputType="textPassword"
+            android:layout_marginTop="10dp"
+            android:hint="Lawyer Code if you have one"/>
+
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

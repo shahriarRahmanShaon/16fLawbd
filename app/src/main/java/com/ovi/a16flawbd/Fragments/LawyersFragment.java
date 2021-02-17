@@ -63,6 +63,7 @@ public class LawyersFragment extends Fragment {
                     assert user != null;
                     assert firebaseUser != null;
                     if (!user.getId().equals(firebaseUser.getUid())){
+                        // add condition here for filtering user by lawyer code
                         mUsers.add(user);
                     }
                     userAdapter = new UserAdapter(getContext(),mUsers);

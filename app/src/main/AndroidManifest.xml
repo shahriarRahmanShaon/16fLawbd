@@ -2,15 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ovi.a16flawbd">
 
-
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.16fLawbd">
+        android:theme="@style/Theme.16fLawbd"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".MessageActivity"></activity>
         <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,11 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            android:parentActivityName=".StartActivity"/>
+        <activity
+            android:name=".LoginActivity"
+            android:parentActivityName=".StartActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity"
-            android:parentActivityName=".StartActivity"/>
+        <activity
+            android:name=".RegisterActivity"
+            android:parentActivityName=".StartActivity" />
     </application>
 
 </manifest>
